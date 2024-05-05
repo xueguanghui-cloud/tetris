@@ -18,7 +18,12 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: "ts-loader",
+        use: {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true, // 启用类型检查
+          },
+        },
       },
     ],
   },
