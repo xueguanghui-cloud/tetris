@@ -1,24 +1,25 @@
 import $ from "jquery";
-import { createTeris } from "./core/Teris";
-import { SquarePageViewer } from "./core/viewer/SquarePageViewer";
-import { TerisRule } from "./core/TerisRule";
-import { Direction } from "./core/types";
+import { Game } from "./core/Game";
+import { GamePageViewer } from "./core/viewer/GamePageViewer";
 
-const teris = createTeris({ x: 8, y: 3 });
-teris.squares.forEach((sq) => {
-  sq.viewer = new SquarePageViewer(sq, $("#root"));
-  sq.viewer.show();
+const game = new Game(new GamePageViewer());
+
+$("#btnStart").on("click", () => {
+  game.start();
+});
+$("#btnPause").on("click", () => {
+  game.pause();
 });
 
 $("#btnDown").on("click", () => {
-  TerisRule.move(teris, Direction.Down);
-});
-$("#btnRight").on("click", () => {
-  TerisRule.move(teris, Direction.Right);
+  game.controlDown();
 });
 $("#btnLeft").on("click", () => {
-  TerisRule.move(teris, Direction.Left);
+  game.controlLeft();
+});
+$("#btnRight").on("click", () => {
+  game.controlRight();
 });
 $("#btnRotate").on("click", () => {
-  TerisRule.rotate(teris);
+  game.controlRotate();
 });

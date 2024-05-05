@@ -1,3 +1,5 @@
+import { SquareGroup } from "./SquareGroup";
+
 export interface Point {
   readonly x: number;
   readonly y: number;
@@ -27,4 +29,24 @@ export enum Direction {
   Left,
   Right,
   Down,
+}
+
+export enum GameStatus {
+  init,
+  playing,
+  pause,
+  over,
+}
+
+export interface GameViewer {
+  /**
+   *
+   * @param teris 下一个方块对象
+   */
+  showNext(teris: SquareGroup): void;
+  /**
+   *
+   * @param teris 切换方块对象
+   */
+  switch(teris: SquareGroup): void;
 }

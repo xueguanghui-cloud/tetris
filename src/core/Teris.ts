@@ -141,8 +141,6 @@ export function createTeris(centerPoint: Point): SquareGroup {
   let index = getRandom(0, shapes.length);
   const Shape = shapes[index];
   index = getRandom(0, colors.length);
-  console.log(index);
   const color = colors[index];
-
   return new Shape(centerPoint, color);
 }
